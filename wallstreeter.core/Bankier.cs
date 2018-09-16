@@ -19,6 +19,8 @@ namespace wallstreeter.core
             Credentials = CredentialCache.DefaultNetworkCredentials
         });
 
+        private readonly string _baseBankierUrl = "https://www.bankier.pl";
+
         public readonly string Url = @"https://www.bankier.pl/inwestowanie/profile/quote.html?symbol={0}";
         public readonly string Messages = @"https://www.bankier.pl/gielda/notowania/akcje/{0}/komunikaty?start_dt={1}&end_dt={2}";
 
@@ -36,7 +38,11 @@ namespace wallstreeter.core
             doc.LoadHtml(responseText);
             var nodes = doc.DocumentNode.SelectNodes("//div[@class='article']/header");
             var messages = new List<MessageInfo>();
-            foreach(var node in nodes)
+            if (nodes == null)
+            {
+                return messages;
+            }
+            foreach (var node in nodes)
             {
                 var aElement = node.Element("span").Element("a");
                 var title = aElement.Attributes["title"].Value;
@@ -45,7 +51,7 @@ namespace wallstreeter.core
                 messages.Add(new MessageInfo
                 {
                     Title = title,
-                    Url = href,
+                    Url = $"{_baseBankierUrl}{href}",
                     Time = time
                 });
             }

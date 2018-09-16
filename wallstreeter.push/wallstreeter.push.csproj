@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0F3069F7-B7B4-4B24-A6C5-CC81020B076B}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>wallstreeter.cmd</RootNamespace>
-    <AssemblyName>wallstreeter.cmd</AssemblyName>
+    <ProjectGuid>{8D9BB87F-48D7-47A7-8369-401E6829EB6A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>wallstreeter.push</RootNamespace>
+    <AssemblyName>wallstreeter.push</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -32,6 +30,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BouncyCastle, Version=1.8.1.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
+      <HintPath>..\packages\PushBulletSharp.3.1.0\lib\portable-windows8+net45\BouncyCastle.dll</HintPath>
+    </Reference>
+    <Reference Include="PushbulletSharp, Version=3.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PushBulletSharp.3.1.0\lib\portable-windows8+net45\PushbulletSharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -43,25 +47,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Token\FileToken.cs" />
+    <Compile Include="Token\IPushToken.cs" />
+    <Compile Include="PushBullet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\wallstreeter.common\wallstreeter.common.csproj">
-      <Project>{315378FD-3680-4267-97D9-CD56F6216434}</Project>
-      <Name>wallstreeter.common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\wallstreeter.core\wallstreeter.core.csproj">
-      <Project>{BE9DD336-8428-45E6-BC78-F0957B6850DB}</Project>
-      <Name>wallstreeter.core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\wallstreeter.push\wallstreeter.push.csproj">
-      <Project>{8D9BB87F-48D7-47A7-8369-401E6829EB6A}</Project>
-      <Name>wallstreeter.push</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
