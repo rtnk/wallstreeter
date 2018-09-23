@@ -4,16 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0F3069F7-B7B4-4B24-A6C5-CC81020B076B}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>wallstreeter.cmd</RootNamespace>
-    <AssemblyName>wallstreeter.cmd</AssemblyName>
+    <ProjectGuid>{5916D025-7DB1-4744-A781-53CB1C501F23}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>wallstreeter.dal</RootNamespace>
+    <AssemblyName>wallstreeter.dal</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -32,9 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="HtmlAgilityPack, Version=1.8.2.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a" />
+    <Reference Include="Dapper, Version=1.50.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.50.5\lib\net451\Dapper.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -44,29 +44,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
+    <Compile Include="QuotationsRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\wallstreeter.common\wallstreeter.common.csproj">
-      <Project>{315378FD-3680-4267-97D9-CD56F6216434}</Project>
+      <Project>{315378fd-3680-4267-97d9-cd56f6216434}</Project>
       <Name>wallstreeter.common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\wallstreeter.core\wallstreeter.core.csproj">
-      <Project>{BE9DD336-8428-45E6-BC78-F0957B6850DB}</Project>
-      <Name>wallstreeter.core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\wallstreeter.dal\wallstreeter.dal.csproj">
-      <Project>{5916D025-7DB1-4744-A781-53CB1C501F23}</Project>
-      <Name>wallstreeter.dal</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\wallstreeter.push\wallstreeter.push.csproj">
-      <Project>{8D9BB87F-48D7-47A7-8369-401E6829EB6A}</Project>
-      <Name>wallstreeter.push</Name>
-    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

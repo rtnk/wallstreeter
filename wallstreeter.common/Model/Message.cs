@@ -2,7 +2,7 @@
 
 namespace wallstreeter.common.Model
 {
-    public class MessageInfo
+    public class Message
     {
         public string StockName { get; set; }
         public DateTime Time { get; set; }
